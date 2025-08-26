@@ -2,7 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import webpush from "web-push";
 import cors from "cors";
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json());
@@ -46,6 +47,7 @@ app.post("/send", async (req, res) => {
   }
 });
 const PORT = process.env.PORT || 4000;
+console.log("process.env.PORT ==> ", process.env.PORT);
 app.listen(PORT, "0.0.0.0", () => {
   console.log("Server running on http://0.0.0.0:4000");
   console.log("Access from other devices using your IP address");
